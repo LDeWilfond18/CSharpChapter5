@@ -11,35 +11,56 @@ namespace HomeSales
     {
         static void Main(string[] args)
         {
-            char initial;
-            int francis = 0;
-            int danielle = 0;
-            int edward = 0;
-            int total = 0;
+            string initial;
+            double francis = 0;
+            double danielle = 0;
+            double edward = 0;
+            double francisTotal = 0;
+            double danielleTotal = 0;
+            double edwardTotal = 0;
+            double grandTotal = 0;
             do
             {
                 WriteLine("Enter your initial brother>> ");
-                initial = Convert.ToChar(ReadLine());
-                if(initial == 'D' || initial == 'd')
+                initial = Convert.ToString(ReadLine());
+                if(initial == "D" || initial == "d")
                 {
-                    WriteLine
+                    WriteLine("enter amount of moonay");
+                    danielle = Convert.ToDouble(ReadLine());
+                    danielleTotal = danielle + danielleTotal;
                 }
-                else if (initial == 'E' || initial == 'e')
+                else if (initial == "E" || initial == "e")
                 {
-                    edward++;
-                    total++;
+                    WriteLine("enter amount of moonay");
+                    edward = Convert.ToDouble(ReadLine());
+                    edwardTotal = edward + edwardTotal;
                 }
-                else if (initial == 'F' || initial == 'f')
+                else if (initial == "F" || initial == "f")
                 {
-                    francis++;
-                    total++;
+                    WriteLine("enter amount of moonay");
+                    francis = Convert.ToDouble(ReadLine());
+                    francis = francis + francisTotal;
                 }
-            } while (initial != 'z' && initial != 'Z');
+            } while (initial != "z" && initial != "Z");
 
-            WriteLine("Edward sold {0} houses ", edward);
-            WriteLine("Danielle sold {0} houses ", danielle);
-            WriteLine("Francis sold {0} houses ", francis);
-            WriteLine("The total houses sold is " + total);
+            if(danielleTotal > edwardTotal && danielleTotal > francisTotal)
+            {
+                WriteLine("Danielle had the most sales with " + danielleTotal);
+            }
+            else if(edwardTotal > danielleTotal && edwardTotal > francisTotal)
+            {
+                WriteLine("Edward had the most sales with " + edwardTotal);
+            }
+            else if (francisTotal > danielleTotal && francisTotal > edwardTotal)
+            {
+                WriteLine("Edward had the most sales with " + francisTotal);
+            }
+
+            grandTotal = francisTotal + danielleTotal + edwardTotal;
+            WriteLine("Grand total is {0} ", grandTotal);
+            WriteLine("Edward's sales were {0} ", edward);
+            WriteLine("Danielle's sales were {0} ", danielle);
+            WriteLine("Francis' sales were {0} ", francis);
         }
     }
 }
